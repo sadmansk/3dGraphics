@@ -30,5 +30,8 @@
     <ClInclude Include="mesh.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

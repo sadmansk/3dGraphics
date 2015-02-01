@@ -15,6 +15,12 @@ private:
 	Shader(const Shader& other) {}
 	void operator=(const Shader& other) {}
 
+	enum {
+		TRANSFORM_U, //for storing the transform uniform in GLSL
+
+		NUM_UNIFORMS
+	};
+
 	GLuint m_program; //keeps track of the shader, uses to locate the shader
 	GLuint m_shaders[NUM_SHADERS];
 };
