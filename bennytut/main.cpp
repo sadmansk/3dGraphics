@@ -3,6 +3,7 @@
 #include <glew/glew.h>
 #include "shader.h"
 #include "mesh.h"
+#include "texture.h"
 
 int main(int argc, char* argv[]) {
 	Display display(800, 600, "Hello World");
@@ -15,9 +16,12 @@ int main(int argc, char* argv[]) {
 
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
 
+	Texture texture("./res/bricks.jpg");
+
 	while (!display.IsClosed()) {
 		display.Clear(0.0f, 0.15f, 0.3f, 1.0f);
 		shader.Bind();
+		texture.Bind(0);
 		mesh.Draw();
 		display.Update();
 	}
