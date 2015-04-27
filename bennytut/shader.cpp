@@ -21,6 +21,9 @@ Shader::Shader(const std::string& fileName)
 		glAttachShader(m_program, m_shaders[i]); //adds the referred shader to the main program, our shader program
 	}
 
+	glBindAttribLocation(m_program, 0, "position");
+	glBindAttribLocation(m_program, 1, "texCoord");
+
 
 	//linking the program
 	glLinkProgram(m_program);
@@ -29,6 +32,9 @@ Shader::Shader(const std::string& fileName)
 	//validates the program
 	glValidateProgram(m_program);
 	CheckShaderError(m_program, GL_VALIDATE_STATUS, true, "Error: Program linking failed"); //checks to see whether there were any errors while validating
+
+	//for referring to transform uniform in the shader
+	m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
 }
 
 
@@ -89,6 +95,11 @@ static std::string LoadShader(const std::string& fileName) {
 
 void Shader::Bind() {
 	glUseProgram(m_program);
+}
+
+void Shader::Update(const Transform& transform) {
+	glm::mat4 model = transform.GetModel();
+	glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
 }
 
 static void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage) {

@@ -37,7 +37,7 @@ public:
 	inline void SetScale(const glm::vec3& scale) { m_scale = scale; }
 
 
-	virtual ~Transform();
+	virtual ~Transform() {};
 	
 private:
 	glm::vec3 m_pos, m_rot, m_scale; //m_ refers to member variables

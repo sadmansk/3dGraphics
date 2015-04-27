@@ -2,12 +2,14 @@
 #define SHADER_H
 #include <string>
 #include <glew\glew.h>
+#include "transform.h"
 
 class Shader
 {
 public:
 	Shader(const std::string& fileName);
 	void Bind();
+	void Update(const Transform& transform);
 	virtual ~Shader();
 
 private:
@@ -23,6 +25,7 @@ private:
 
 	GLuint m_program; //keeps track of the shader, uses to locate the shader
 	GLuint m_shaders[NUM_SHADERS];
+	GLuint m_uniforms[NUM_UNIFORMS];
 };
 
 #endif //SHADER_H
