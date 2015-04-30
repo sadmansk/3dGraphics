@@ -31,9 +31,14 @@ int main(int argc, char* argv[]) {
 	while (!display.IsClosed()) {
 		display.Clear(0.0f, 0.15f, 0.3f, 1.0f);
 
-		transform.GetPos().x = sinf(counter);
+		float sinCounter = sinf(counter);
+		float absSinCounter = abs(sinCounter);
+
+		transform.GetPos().x = sinCounter;
+		transform.GetRot().y = counter;
 		transform.GetRot().z = counter;
-		//transform.SetScale(glm::vec3(sinf(counter), sinf(counter), sinf(counter)));
+		//transform.GetScale()->x = absSinCounter;
+		//transform.GetScale()->y = absSinCounter;
 
 		shader.Bind();
 		shader.Update(transform, camera);

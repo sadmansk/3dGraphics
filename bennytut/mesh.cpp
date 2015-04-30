@@ -14,6 +14,7 @@ Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, un
 	for (int i = 0; i < numVertices; i++) {
 		model.positions.push_back(*vertices[i].getPos());
 		model.texCoords.push_back(*vertices[i].getTexCoord());
+		model.normals.push_back(*vertices[i].getNormal());
 	}
 
 
@@ -69,6 +70,14 @@ void Mesh::InitMesh(const IndexedModel& model) {
 
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_vertexArrayBuffers[NORMAL_VB]);
+	//take data and put it in the buffer, from program to GPU memory
+	glBufferData(GL_ARRAY_BUFFER, model.normals.size() * sizeof(model.normals[0]), &model.normals[0], GL_STATIC_DRAW); //static draw means that the data is not gonna change
+
+	//need a vertex attribute for every vertex member, tells where in the sequence to look at in the GPU memory
+	glEnableVertexAttribArray(2); //look at it as an array
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
 	//get some buffers to work with
 	glGenBuffers(NUM_BUFFERS, m_vertexArrayBuffers);
