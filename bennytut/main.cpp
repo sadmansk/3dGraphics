@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]), indices, sizeof(indices)/sizeof(indices[0]));
 	Mesh mesh2("./res/monkey.obj");
 	Camera camera(glm::vec3(0, 0, -3), 70.0f, (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f);
-	Texture texture("./res/bricks.jpg");
+	Texture texture("./res/gray.jpg");
 	Transform transform;
 
 	float counter = 0.0f;
