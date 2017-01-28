@@ -7,11 +7,11 @@
 #include "transform.h"
 #include "camera.h"
 
-#define WIDTH 800
-#define HEIGHT 600
+#define WIDTH 1280
+#define HEIGHT 720
 
 int main(int argc, char* argv[]) {
-	Display display(800, 600, "Hello World");
+	Display display(WIDTH, HEIGHT, "3D Model Viewer");
 	
 	Shader shader("./res/basicShader");
 
