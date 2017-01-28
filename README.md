@@ -19,6 +19,9 @@ make
 > Note: These instructions are for Mac and Linux, Windows/Visual Studio details
 coming soon.
 
+In action:
+![Suzanne Demo](res/demo.git)
+
 
 ### Tools:
 <strong>IDE: </strong>Visual Studio 2013  
