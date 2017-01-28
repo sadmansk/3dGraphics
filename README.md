@@ -20,7 +20,7 @@ make
 coming soon.
 
 In action:
-![Suzanne Demo](res/demo.git)
+![Suzanne Demo](res/demo.gif)
 
 
 ### Tools:
